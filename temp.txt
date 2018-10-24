@@ -1,3 +1,0 @@
-R Visualization Demonstrations Copyright (C) 2018 Matthew D. Turner 
-These program files come with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions; see the license file for more details: 
-https://github.com/theEducationalCollective/2018-Scientific-Computing-Day-Visualization-Workshop/blob/master/LICENSE
