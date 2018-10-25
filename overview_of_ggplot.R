@@ -120,7 +120,7 @@ ggplot(data = milk, aes(x = time, y = protein)) + geom_point()
 # new aesthetic to the points directly:
 
 # Change specification at the first layer:
-#
+
 ggplot(data = milk, aes(x = time, y = protein, col = diet)) + geom_point()
 
 # It is important to look at your data carefully -- there is a lot
