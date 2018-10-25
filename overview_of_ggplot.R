@@ -201,7 +201,8 @@ ggplot(data = milk, aes(x = as.factor(time), y = protein)) +
 # Notice the new trick: in the first three layers, x is a FACTOR time,
 # as that works for points, jitter, and boxplots. Then it is changed
 # to a continuous variable (a number) for the geom_smooth() function
-# to fit the line.
+# to fit the line. We have also eliminated the groups (diet) so we get
+# one line only.
 #
 # Swap the boxplot for the currently more trendy "violin plot":
 
@@ -262,6 +263,7 @@ ggplot(milk, aes(x = protein, color = diet)) +
 # Technically this shows the same basic information as the density
 # plot figure, but the histograms are harder to read and interpret
 # with multiple overlays of data. The density is better in how it
-# shows things and also in that it averages the data a bit.
+# shows things and also in that it averages the data a bit. For group
+# comparisons of distribution, statisticians prefer the density plots.
 
 # EOF

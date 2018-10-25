@@ -159,6 +159,11 @@ head(bwd)
 
 
 
+# For fun, use the xlim() shown above to tweak the x-axis to show the
+# whole plot:
+
+
+
 
 # 3. Scatterplots
 #
