@@ -211,51 +211,57 @@ ggplot(data = milk, aes(x = as.factor(time), y = protein)) +
   geom_violin(outlier.shape = NA, alpha = 0.50, lwd = 1.5) +
   geom_smooth(aes(x = time), lwd = 2, color = "red")
 
-
-
-
-
+# Facets
 #
-
-
-
-
-
-
-
-#library(ggplot2)
-
-data(ChickWeight)
-diet1 <- subset(ChickWeight, Diet == 1)
-diet2 <- subset(ChickWeight, Diet == 2)
-head(diet1)
-head(diet2)
-
-
-
-
-
-
-
-
-
-
-#### AUTOPLOT ####
+# Facets are used to break data into groups and make a different plot
+# for each group. This is an important part of making plots make sense
+# for complex arrangements of data.
 #
-# Advanced:
+# In this example we will use a variable for part of the plot and then
+# add additional layers to it to change it.
+
+p <- ggplot(data = milk, aes(x = time, y = protein)) + geom_point()
+
+p # Show the plot, p
+
+p + facet_wrap(~diet)    # Show the plot p with facets
+
+p + facet_wrap(~diet) + geom_smooth(lwd = 1.5)    # Facets + Smoothers
+
+# Note that the two plots where we added things to p did NOT change p
+# itself:
+
+p # The original plot!
+
+# If we want to update p to hold the new plot, we need to do this:
+
+p <- p + facet_wrap(~diet) + geom_smooth(lwd = 1.5) # Note: does not show
+
+p # Show the new plot
+
+# Another Facet Example
 #
+# Here we do a DENSITY plot of protein levels (kind of like histograms
+# but smoothed more) by diet and faceted by time:
 
-# install.packages("ggfortify")
+ggplot(milk, aes(x = protein, color = diet)) + geom_density() +
+  facet_wrap(~time)
 
-library(ggfortify)
-data(CO2)
+# If you prefer histgograms:
 
-m <- lm(CO2$uptake ~ CO2$conc)
-summary(m)
+ggplot(milk, aes(x = protein, color = diet)) + geom_histogram() +
+  facet_wrap(~time)
 
-autoplot(m, which = 1:6)
+# Note that we set color and that is the color of the OUTLINE of a
+# histogram. We likely meant to use fill:
 
+ggplot(milk, aes(x = protein, color = diet)) +
+  geom_histogram(aes(fill = diet)) +
+  facet_wrap(~time)
 
-
+# Technically this shows the same basic information as the density
+# plot figure, but the histograms are harder to read and interpret
+# with multiple overlays of data. The density is better in how it
+# shows things and also in that it averages the data a bit.
 
 # EOF
